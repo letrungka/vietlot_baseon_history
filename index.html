@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Vietlott 6/45</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+</head>
+
+<body>
+
+    <div id="demo">
+        <h3>What are you finding ? </h3>
+        <h3>Is that a set of numbers to try your lucky on viettlot 6/45? </h3>
+        <h3>Yeahhh, you are in right place ... Click bellow button for getting your lucky </h3>
+        <button type="button" onclick="loadDoc()">Click</button>    
+    </div>
+    <br>
+    <div id="results"></div>
+    <script>
+        async function loadDoc() {
+            console.log("loadDoc")
+            var url = "https://mfmc6fs3si.execute-api.us-east-1.amazonaws.com/v1/v645"
+            let response = await fetch(url);
+
+            let resJson = await response.json();
+            console.log(resJson);
+
+            br = document.createElement("BR");
+            document.getElementById("results").appendChild(br);
+
+            var i;
+            
+            for (i = 0; i < 5; i++) {
+                para = document.createElement("LI");
+                para.innerHTML = resJson[i]; document.getElementById("results").appendChild(para);
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
